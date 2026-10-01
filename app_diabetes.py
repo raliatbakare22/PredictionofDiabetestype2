@@ -30,3 +30,9 @@ input_data = pd.DataFrame({
 if st.button("Predict"):
     prediction = logis.predict(input_data)
     st.write(f"Predicted Diabetes Result: {prediction[0]}")
+    if prediction == 1:
+        st.markdown(f'<h4 style="color:red; background-color:#000; size:20px;">The model predicts you <strong>have diabetes</strong> with a probability of {probability:.2f}.</h4>', unsafe_allow_html=True)
+        st.status('Model Prediction Completed')
+    else:
+        st.markdown(f'<h4 style="color:green; background-color:#000; size:20px">The model predicts you <strong>do not have diabetes</strong> with a probability of {1 - probability:.2f}.</h4>', unsafe_allow_html=True)
+        st.status('Model Prediction Completed')
